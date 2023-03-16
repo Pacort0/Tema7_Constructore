@@ -1,9 +1,9 @@
 package ejercicio01;
 
 public class Hora {
-	private int hora = 0;
-	private int minuto = 0;
-	private int segundos = 0;
+	int hora;
+	int minuto;
+	int segundos;
 
 	public Hora() {
 
@@ -20,8 +20,10 @@ public class Hora {
 	}
 
 	public void setHora(int hora) {
-		if (hora < 0 || hora > 23) {
+		if (hora >= 0 && hora <= 23) {
 			this.hora = hora;
+		} else {
+			System.err.println("La hora introducida no existe");
 		}
 	}
 
@@ -30,8 +32,10 @@ public class Hora {
 	}
 
 	public void setMinuto(int minuto) {
-		if (minuto < 0 || minuto > 59) {
+		if (minuto >= 0 && minuto <= 59) {
 			this.minuto = minuto;
+		} else {
+			System.err.println("Los minutos introducidos no existen");
 		}
 	}
 
@@ -40,26 +44,30 @@ public class Hora {
 	}
 
 	public void setSegundos(int segundos) {
-		if (segundos < 0 || segundos > 59) {
+		if (segundos >= 0 && segundos <= 59) {
 			this.segundos = segundos;
+		} else {
+			System.err.println("Los segundos introducidos no existen");
 		}
 	}
 
 	public void incrementaSegundos(int incremento) {
 
-		for (int i = 0; i <= incremento; i++) {
+		for (int i = 1; i <= incremento; i++) {
 
 			segundos++;
-
-			if (this.segundos == 59) {
-				this.minuto++;
+			if (getSegundos() > 59) {
+				minuto++;
+				setSegundos(0);
 			}
-			if (this.minuto == 59) {
-				this.hora++;
+			if (getMinuto()> 59) {
+				hora++;
+				setMinuto(0);
 			}
-			if (this.hora == 23) {
-				hora = 0;
+			if (getHora() > 23) {
+				setMinuto(0);
 			}
 		}
 	}
+
 }
