@@ -7,10 +7,10 @@ package ejercicio04;
  *
  */
 public class Articulo {
-	final int IVA = 21;
-	String nombre;
-	double precio;
-	int cuantosQuedan;
+	public final static int IVA = 21;
+	private String nombre;
+	private double precio;
+	private int cuantosQuedan;
 
 	/**
 	 * Constructor que asigna valores a cada artículo
