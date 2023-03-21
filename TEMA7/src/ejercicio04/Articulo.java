@@ -25,7 +25,7 @@ public class Articulo {
 		} else {
 			this.nombre = nombre;
 			this.precio = precio;
-			this.cuantosQuedan = cuantosQuedan;
+			this.setCuantosQuedan(cuantosQuedan);
 		}
 	}
 	
@@ -35,7 +35,7 @@ public class Articulo {
 	void muestraInfo() {
 		System.out.println("Nombre del producto: " + this.nombre
 				+ "\nPrecio unitario del producto: " + this.precio
-				+ "\ncuantosQuedan: " + this.cuantosQuedan);
+				+ "\ncuantosQuedan: " + this.getCuantosQuedan());
 	}
 	
 	/**
@@ -73,9 +73,9 @@ public class Articulo {
 	Boolean vender (int aComprar) {
 		Boolean vender = false;
 		
-		if((cuantosQuedan - aComprar) >= 0) {
+		if((getCuantosQuedan() - aComprar) >= 0) {
 			vender = true;
-			cuantosQuedan -= aComprar;
+			setCuantosQuedan(getCuantosQuedan() - aComprar);
 		}
 		
 		return vender;
@@ -86,7 +86,15 @@ public class Articulo {
 	 * @param cargamento Cantidad de productos que se reciben en el cargamento
 	 */
 	void almacenar(int cargamento) {
-		this.cuantosQuedan += cargamento;
+		this.setCuantosQuedan(this.getCuantosQuedan() + cargamento);
+	}
+
+	public int getCuantosQuedan() {
+		return cuantosQuedan;
+	}
+
+	public void setCuantosQuedan(int cuantosQuedan) {
+		this.cuantosQuedan = cuantosQuedan;
 	}
 
 }

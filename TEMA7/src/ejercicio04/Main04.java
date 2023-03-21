@@ -10,21 +10,21 @@ public class Main04 {
 		System.out.println("El artículo vale (con IVA) un total de " + gorro.getPVP());
 		System.out.println("El artículo con su código de descuento del 15% vale " + gorro.getPVPDescuento(15));
 		System.out.println(gorro.vender(3));
-		System.out.println("Quedan " + gorro.cuantosQuedan);
+		System.out.println("Quedan " + gorro.getCuantosQuedan());
 		System.out.println(gorro.vender(14));
-		System.out.println("Quedan " + gorro.cuantosQuedan);
+		System.out.println("Quedan " + gorro.getCuantosQuedan());
 		gorro.almacenar(8);
-		System.out.println("Quedan " + gorro.cuantosQuedan);
+		System.out.println("Quedan " + gorro.getCuantosQuedan());
 		
 		dildo.muestraInfo();
 		System.out.println("El artículo vale (con IVA) un toal de " + dildo.getPVP());
 		System.out.println("El artículo con su código de descuento del 20% vale " + dildo.getPVPDescuento(20));
 		System.out.println(dildo.vender(23));
-		System.out.println("Quedan " + dildo.cuantosQuedan);
+		System.out.println("Quedan " + dildo.getCuantosQuedan());
 		System.out.println(dildo.vender(14));
-		System.out.println("Quedan " + dildo.cuantosQuedan);
+		System.out.println("Quedan " + dildo.getCuantosQuedan());
 		dildo.almacenar(8);
-		System.out.println("Quedan " + dildo.cuantosQuedan);
+		System.out.println("Quedan " + dildo.getCuantosQuedan());
 		
 	}
 
