@@ -22,9 +22,11 @@ public class Fecha {
 	public void setDia(int dia) {
 		if (dia > 0 && dia <= 31) {
 			if(getMes() != 2 && dia <= 28) {
+				this.dia = dia;
+			}
+			if(getMes() != 1) {
 				
 			}
-			this.dia = dia;
 		}
 	}
 
