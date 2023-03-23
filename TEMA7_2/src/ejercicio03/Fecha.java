@@ -21,12 +21,19 @@ public class Fecha {
 
 	public void setDia(int dia) {
 		if (dia > 0 && dia <= 31) {
-			if(getMes() != 2 && dia <= 28) {
+			if (getMes() == 2 && dia <= 28) {
 				this.dia = dia;
 			}
-			if(getMes() != 1) {
-				
+			else if ((getMes() == 1 || getMes() == 3 || getMes() == 5 || getMes() == 7 || getMes() == 8 || getMes() == 10
+					|| getMes() == 12) && dia <= 31) {
+				this.dia = dia;
 			}
+			else {
+				this.dia =  dia;
+			}
+		}
+		else {
+			System.err.println("Día introducido incorrecto.");
 		}
 	}
 
@@ -35,7 +42,12 @@ public class Fecha {
 	}
 
 	public void setMes(int mes) {
-		this.mes = mes;
+		if(mes > 0 && mes <= 12) {
+			this.mes = mes;
+		}
+		else {
+			System.err.println("Mes introducido incorrecto.");
+		}
 	}
 
 	public int getAnio() {
@@ -43,7 +55,24 @@ public class Fecha {
 	}
 
 	public void setAnio(int anio) {
-		this.anio = anio;
+		if(anio > 1908 && anio <= 2023) {
+			this.anio = anio;
+		}
+		else {
+			System.err.println("Año introducido incorrecto.");
+		}
 	}
-
+	
+	public boolean esBisiesto() {
+		boolean bisiesto;
+		if(getAnio() % 4 == 0 || (getAnio() % 100 == 0 && getAnio() % 400 == 0)) { //Si además es divisible entre 100
+					bisiesto = true; //Si es divisible entre 100 y 400 es bisiesto
+				}
+				else {
+					bisiesto = false; //Si no, no lo es
+				}
+		
+		return bisiesto;
+	}
+	
 }
