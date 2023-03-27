@@ -71,8 +71,8 @@ public class Disco {
 
 	@Override
 	public String toString() {
-		return "Disco [codigo=" + codigo + ", autor=" + autor + ", titulo=" + titulo + ", genero=" + genero
-				+ ", duracion=" + duracion + "]";
+		return "Disco [codigo = " + codigo + ", autor= " + autor + ", titulo = " + titulo + ", genero = " + genero
+				+ ", duracion = " + duracion + "]";
 	}
 	
 	
