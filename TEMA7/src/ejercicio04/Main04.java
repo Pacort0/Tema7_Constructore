@@ -3,6 +3,7 @@ package ejercicio04;
 public class Main04 {
 
 	public static void main(String[] args) {
+		//Creamos dos objetos para probar que todo funciona
 		Articulo gorro = new Articulo ("Gorro rana", 15, 10);
 		Articulo dildo = new Articulo ("Hot Pleasure", 20, 30);
 		

@@ -5,7 +5,7 @@ import java.util.Scanner;
 public class Main03 {
 
 	public static void main(String[] args) {
-		Fecha primera = new Fecha(5, 3, 1996);
+		Fecha primera = new Fecha(19, 2, 1924);
 
 		Scanner sc = new Scanner(System.in);
 

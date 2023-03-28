@@ -61,12 +61,12 @@ public class Fecha {
 			if (getMes() == 2 && getDia() <= 28) {
 				correcta = true;
 			}
-			if (getMes() == 2 && getDia() == 29 && !esBisiesto()) {
-				correcta = false;
+			else if (getMes() == 2 && getDia() <= 29 && esBisiesto()) {
+				correcta = true;
 			} else if ((getMes() == 1 || getMes() == 3 || getMes() == 5 || getMes() == 7 || getMes() == 8
 					|| getMes() == 10 || getMes() == 12) && getDia() <= 31) {
 				correcta = true;
-			} else {
+			} else if (getMes() != 2){
 				correcta = true;
 			}
 		}
