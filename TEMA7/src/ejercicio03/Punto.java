@@ -21,13 +21,6 @@ public class Punto {
 	}
 	
 	/**
-	 * Método que imprime la posición del punto en el momento
-	 */
-	void imprime() {
-		System.out.println("Las coordenadas del punto son: (" + this.x + ", " + this.y + ")");
-	}
-	
-	/**
 	 * Método que altera el valor de 'x' e 'y' directamente
 	 * @param x Nueva posición 'x' del punto
 	 * @param y Nueva posición 'y' del punto
@@ -46,8 +39,6 @@ public class Punto {
 	void desplaza(int dx, int dy) {
 		this.x += dx;
 		this.y += dy;
-		
-		System.out.println("El punto se ha desplazado a las coordenadas (" + this.x + ", " + this.y + ")");
 	}
 	
 	/**
@@ -62,4 +53,11 @@ public class Punto {
 		
 		return distancia;
 	}
+
+	@Override
+	public String toString() {
+		return "Punto [x=" + x + ", y=" + y + "]";
+	}
+	
+	
 }

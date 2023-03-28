@@ -60,13 +60,11 @@ public class Fecha {
 		if (getDia() > 0 && getDia() <= 31) {
 			if (getMes() == 2 && getDia() <= 28) {
 				correcta = true;
-			}
-			else if (getMes() == 2 && getDia() <= 29 && esBisiesto()) {
+			} else if (getMes() == 2 && getDia() <= 29 && esBisiesto()) {
 				correcta = true;
-			} else if ((getMes() == 1 || getMes() == 3 || getMes() == 5 || getMes() == 7 || getMes() == 8
-					|| getMes() == 10 || getMes() == 12) && getDia() <= 31) {
+			} else if ((mesDe31()) && getDia() <= 31) {
 				correcta = true;
-			} else if (getMes() != 2){
+			} else if (getMes() != 2 && getDia() <= 30) {
 				correcta = true;
 			}
 		}
@@ -81,4 +79,65 @@ public class Fecha {
 
 		return correcta;
 	}
+
+	public void diaSiguiente() {
+		if (this.dia == 31 && mesDe31()) {
+
+			if (lastMonth()) {
+				this.dia = 1;
+				this.mes = 1;
+				this.anio++;
+
+			} else {
+				this.dia = 1;
+				this.mes++;
+			}
+		}
+
+		else if ((this.dia == 29 && this.mes == 2) || this.dia == 30 && this.mes != 2) {
+			this.dia = 1;
+			this.mes++;
+		}
+
+		else {
+			this.dia++;
+		}
+	}
+
+	public boolean lastMonth() {
+		boolean ultimo = false;
+
+		if (this.mes == 12) {
+			ultimo = true;
+		}
+
+		return ultimo;
+	}
+
+	public boolean mesDe31() {
+		boolean mesLargo = false;
+
+		if (getMes() == 1 || getMes() == 3 || getMes() == 5 || getMes() == 7 || getMes() == 8 || getMes() == 10
+				|| getMes() == 12) {
+			mesLargo = true;
+		}
+
+		return mesLargo;
+	}
+
+	public String toString() {
+		String formato = "";
+
+		if (this.dia < 10) {
+			formato = "0" + dia + "-" + mes + "-" + anio;
+		} else if (this.mes < 10) {
+			formato = dia + "-0" + mes + "-" + anio;
+		}
+		if (this.mes < 10 && this.dia < 10) {
+			formato = "0" + dia + "-0" + mes + "-" + anio;
+		}
+
+		return formato;
+	}
+
 }
