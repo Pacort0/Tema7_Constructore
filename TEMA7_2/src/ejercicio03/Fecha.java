@@ -46,11 +46,9 @@ public class Fecha {
 	}
 
 	public boolean esBisiesto() {
-		boolean bisiesto;
+		boolean bisiesto = false;
 		if (getAnio() % 4 == 0 || (getAnio() % 100 == 0 && getAnio() % 400 == 0)) { // Si además es divisible entre 100
 			bisiesto = true; // Si es divisible entre 100 y 400 es bisiesto
-		} else {
-			bisiesto = false; // Si no, no lo es
 		}
 
 		return bisiesto;
