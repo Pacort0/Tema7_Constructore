@@ -1,9 +1,9 @@
 package ejercicio03;
 
-
 /**
- * Clase que controla las veracidad de las fechas y sus cambios.
- * Todas las fechas tienen los atributos 'dia', 'mes' y 'anio'
+ * Clase que controla las veracidad de las fechas y sus cambios. Todas las
+ * fechas tienen los atributos 'dia', 'mes' y 'anio'
+ * 
  * @author Admin
  *
  */
@@ -11,18 +11,19 @@ public class Fecha {
 	private int dia;
 	private int mes;
 	private int anio;
-	
+
 	/**
 	 * Constructor por defecto
 	 */
 	public Fecha() {
 
 	}
-	
+
 	/**
 	 * Constructor de Fecha
-	 * @param dia Día de la fecha
-	 * @param mes Mes de la fecha
+	 * 
+	 * @param dia  Día de la fecha
+	 * @param mes  Mes de la fecha
 	 * @param anio Año de la fecha
 	 */
 	public Fecha(int dia, int mes, int anio) {
@@ -31,36 +32,74 @@ public class Fecha {
 		this.anio = anio;
 	}
 
+	/**
+	 * Método que recoge el valor de 'dia'
+	 * 
+	 * @return El valor de 'dia'
+	 */
 	public int getDia() {
 		return dia;
 	}
 
+	/**
+	 * Método que asigna un valor a 'dia', comprobando antes que la fecha
+	 * introducida es correcta
+	 * 
+	 * @param dia Valor que le vamos a asignar a 'dia'
+	 */
 	public void setDia(int dia) {
 		if (fechaCorrecta()) {
 			this.dia = dia;
 		}
 	}
 
+	/**
+	 * Método que recoge el valor de 'mes'
+	 * 
+	 * @return El valor de 'mes'
+	 */
 	public int getMes() {
 		return mes;
 	}
 
+	/**
+	 * Método que asigna un valor a 'mes', comprobando antes que la fecha sea
+	 * correcta
+	 * 
+	 * @param mes El valor que le queremos asignar a 'mes'
+	 */
 	public void setMes(int mes) {
 		if (fechaCorrecta()) {
 			this.mes = mes;
 		}
 	}
 
+	/**
+	 * Método que recoge el valor de 'anio'
+	 * 
+	 * @return El valor de 'anio'
+	 */
 	public int getAnio() {
 		return anio;
 	}
 
+	/**
+	 * Método que asigna un valor a 'anio', comprobando antes que la fecha sea
+	 * correcta
+	 * 
+	 * @param anio Valor que le queremos asignar a 'anio'
+	 */
 	public void setAnio(int anio) {
 		if (fechaCorrecta()) {
 			this.anio = anio;
 		}
 	}
 
+	/**
+	 * Método que comprueba si el año introducido es bisiesto o no
+	 * 
+	 * @return Devuelve un booleano en función de su bisiestedad
+	 */
 	public boolean esBisiesto() {
 		boolean bisiesto = false;
 		if (getAnio() % 4 == 0 || (getAnio() % 100 == 0 && getAnio() % 400 == 0)) { // Si además es divisible entre 100
@@ -70,56 +109,79 @@ public class Fecha {
 		return bisiesto;
 	}
 
+	/**
+	 * Método que comprueba que la fecha introducida sea correcta
+	 * 
+	 * @return Devuelve un booleano en función de si la fecha es correcta o no
+	 */
 	public boolean fechaCorrecta() {
 		boolean correcta = false;
 
-		if (getDia() > 0 && getDia() <= 31) {
-			if (getMes() == 2 && getDia() <= 28) {
+		if (getDia() > 0 && getDia() <= 31) { // Primero comprobamos si el día introducido es potencialmente correcto
+			if (getMes() == 2 && getDia() <= 28) { // Luego comprobamos que, en caso de ser febrero, el rango no supera
+													// 28
 				correcta = true;
-			} else if (getMes() == 2 && getDia() <= 29 && esBisiesto()) {
+			} else if (getMes() == 2 && getDia() <= 29 && esBisiesto()) { // Si el día es mayor que 28, comprobamos si
+																			// el año es bisiesto (en caso de que sea 29
+																			// de febrero)
 				correcta = true;
-			} else if ((mesDe31()) && getDia() <= 31) {
+			} else if ((mesDe31()) && getDia() <= 31) { // Si no es febrero, comprobamos si es un mes de 31 días y el
+														// rango es correcto
 				correcta = true;
-			} else if (getMes() != 2 && getDia() <= 30) {
+			} else if (getMes() != 2 && getDia() <= 30) { // Si no es un mes de 31 días, comprobamos que el rango sea
+															// correcto para el resto de meses
 				correcta = true;
 			}
 		}
 
+		// Comprobamos que el mes sea correcto
 		if (getMes() <= 0 || getMes() > 12) {
 			correcta = false;
 		}
 
-		if (getAnio() < 0 || getAnio() > 2023) {
+		// Comprobamos que el año sea positivo
+		if (getAnio() < 0) {
 			correcta = false;
 		}
 
 		return correcta;
 	}
 
+	/**
+	 * Método que calcula el día siguiente a la fecha introducida
+	 */
 	public void diaSiguiente() {
-		if (this.dia == 31 && mesDe31()) {
+		if (this.dia == 31 && mesDe31()) { // Si es 31 de un mes de 31 días
 
-			if (lastMonth()) {
-				this.dia = 1;
-				this.mes = 1;
+			if (lastMonth()) { // Y además es diciembre, debemos cambiar el año y hacer que sea 1 de enero
+				setDia(1);
+				setMes(1);
 				this.anio++;
 
-			} else {
-				this.dia = 1;
+			} else { // Si no es 31 de diciembre, simplemente cambiamos de mes
+				setDia(1);
 				this.mes++;
 			}
 		}
 
-		else if ((this.dia == 29 && this.mes == 2) || this.dia == 30 && this.mes != 2) {
+		// Pero si no es 31 de un mes de 31 días, y en cambio es 29 de febrero de un
+		// bisiesto, 28 de febrero de un año normal o día 30 de un mes de 30 días,
+		// cambiamos la fecha
+		else if ((this.dia == 29 && this.mes == 2 && esBisiesto()) || this.dia == 28 && this.mes == 2
+				|| this.dia == 30 && this.mes != 2) {
 			this.dia = 1;
 			this.mes++;
 		}
-
+		//Si no se da ninguno de estos casos, es un día normal
 		else {
 			this.dia++;
 		}
 	}
-
+	
+	/**
+	 * Método que comprueba si es diciembre o no 
+	 * @return Devuelve un booleano en función de si es diciembre o no
+	 */
 	public boolean lastMonth() {
 		boolean ultimo = false;
 
@@ -129,7 +191,11 @@ public class Fecha {
 
 		return ultimo;
 	}
-
+	
+	/**
+	 * Método que comprueba si el mes introducido es o no un mes de 31 días
+	 * @return Devuelve un booleano en función de su mes-31-dad
+	 */
 	public boolean mesDe31() {
 		boolean mesLargo = false;
 
@@ -140,7 +206,10 @@ public class Fecha {
 
 		return mesLargo;
 	}
-
+	
+	/**
+	 * Método toString modificado para mostrar '0' delante de las fechas de un sólo dígito
+	 */
 	public String toString() {
 		String formato = "";
 

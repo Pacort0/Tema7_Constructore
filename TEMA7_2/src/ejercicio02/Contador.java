@@ -46,7 +46,9 @@ public class Contador {
 	 * @param cont Cantidad que poner al contador
 	 */
 	public void setCont(int cont) {
-		this.cont = cont;
+		if(cont > 0) {
+			this.cont = cont;
+		}
 	}
 	
 	/**
@@ -82,5 +84,6 @@ public class Contador {
 		
 		return negativo;
 	}
+	
 
 }

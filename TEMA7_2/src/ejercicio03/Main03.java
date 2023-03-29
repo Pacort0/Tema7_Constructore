@@ -3,7 +3,7 @@ package ejercicio03;
 public class Main03 {
 
 	public static void main(String[] args) {
-		Fecha primera = new Fecha(31, 5, 1999);
+		Fecha primera = new Fecha(28, 2, 1999);
 
 		if (!primera.fechaCorrecta()) {
 			System.err.println("La fecha introducida es incorrecta.");

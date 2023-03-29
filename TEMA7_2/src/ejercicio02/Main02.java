@@ -14,7 +14,7 @@ public class Main02 {
 		//Pedimos al usuario un valor inicial para el contador
 		System.out.println("Inicie el contador con un valor: ");
 		cont1.setCont(sc.nextInt());
-		
+
 		//Menú del programa
 		do {
 			System.out.println("Elija una opción: " + "\n1. Incrementar contador." + "\n2. Decrementar contador."
