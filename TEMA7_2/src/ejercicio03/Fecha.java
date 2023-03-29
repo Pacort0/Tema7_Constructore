@@ -118,8 +118,8 @@ public class Fecha {
 		boolean correcta = false;
 
 		if (getDia() > 0 && getDia() <= 31) { // Primero comprobamos si el día introducido es potencialmente correcto
-			if (getMes() == 2 && getDia() <= 28) { // Luego comprobamos que, en caso de ser febrero, el rango no supera
-													// 28
+			if (getMes() == 2 && getDia() <= 28 && !esBisiesto()) { // Luego comprobamos que, en caso de ser febrero, el
+																	// rango no supera 28
 				correcta = true;
 			} else if (getMes() == 2 && getDia() <= 29 && esBisiesto()) { // Si el día es mayor que 28, comprobamos si
 																			// el año es bisiesto (en caso de que sea 29
@@ -172,14 +172,15 @@ public class Fecha {
 			this.dia = 1;
 			this.mes++;
 		}
-		//Si no se da ninguno de estos casos, es un día normal
+		// Si no se da ninguno de estos casos, es un día normal
 		else {
 			this.dia++;
 		}
 	}
-	
+
 	/**
-	 * Método que comprueba si es diciembre o no 
+	 * Método que comprueba si es diciembre o no
+	 * 
 	 * @return Devuelve un booleano en función de si es diciembre o no
 	 */
 	public boolean lastMonth() {
@@ -191,9 +192,10 @@ public class Fecha {
 
 		return ultimo;
 	}
-	
+
 	/**
 	 * Método que comprueba si el mes introducido es o no un mes de 31 días
+	 * 
 	 * @return Devuelve un booleano en función de su mes-31-dad
 	 */
 	public boolean mesDe31() {
@@ -206,9 +208,10 @@ public class Fecha {
 
 		return mesLargo;
 	}
-	
+
 	/**
-	 * Método toString modificado para mostrar '0' delante de las fechas de un sólo dígito
+	 * Método toString modificado para mostrar '0' delante de las fechas de un sólo
+	 * dígito
 	 */
 	public String toString() {
 		String formato = "";
