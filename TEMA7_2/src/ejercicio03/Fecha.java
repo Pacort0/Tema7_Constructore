@@ -1,14 +1,30 @@
 package ejercicio03;
 
+
+/**
+ * Clase que controla las veracidad de las fechas y sus cambios.
+ * Todas las fechas tienen los atributos 'dia', 'mes' y 'anio'
+ * @author Admin
+ *
+ */
 public class Fecha {
 	private int dia;
 	private int mes;
 	private int anio;
-
+	
+	/**
+	 * Constructor por defecto
+	 */
 	public Fecha() {
 
 	}
-
+	
+	/**
+	 * Constructor de Fecha
+	 * @param dia Día de la fecha
+	 * @param mes Mes de la fecha
+	 * @param anio Año de la fecha
+	 */
 	public Fecha(int dia, int mes, int anio) {
 		this.dia = dia;
 		this.mes = mes;
