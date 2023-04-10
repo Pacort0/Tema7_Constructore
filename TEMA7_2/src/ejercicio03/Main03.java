@@ -9,7 +9,7 @@ public class Main03 {
 
 	public static void main(String[] args) {
 		//Creamos un objeto de tipo Fecha
-		Fecha primera = new Fecha(28, 2, 2000);
+		Fecha primera = new Fecha(10, 1, 1996);
 		
 		//Si la fecha no es correcta, imprimimos un mensaje de error
 		if (!primera.fechaCorrecta()) {

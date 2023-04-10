@@ -22,10 +22,9 @@ public class CuentaCorriente {
 	 * @param DNI DNI del titular de la cuenta
 	 * @param saldo Dinero disponible en la cuenta
 	 */
-	CuentaCorriente (String DNI, double saldo, String sexo){
+	CuentaCorriente (String DNI, double saldo){
 		this.DNI = DNI;
 		this.saldo = saldo;
-		this.sexo = Sexo.valueOf(sexo);
 	}
 	
 	/**
@@ -34,10 +33,11 @@ public class CuentaCorriente {
 	 * @param nombre Nombre del titular de la cuenta
 	 * @param saldo Dinero disponible en la cuenta
 	 */
-	CuentaCorriente (String DNI, String nombre, double saldo){
+	CuentaCorriente (String DNI, String nombre, double saldo, String sexo){
 		this.DNI = DNI;
 		this.nombre = nombre;
 		this.saldo = saldo;
+		this.sexo = Sexo.valueOf(sexo);
 	}
 	
 	public Sexo getSexo() {

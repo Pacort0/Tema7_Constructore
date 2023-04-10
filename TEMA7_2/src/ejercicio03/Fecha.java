@@ -8,9 +8,9 @@ package ejercicio03;
  *
  */
 public class Fecha {
-	private int dia;
-	private int mes;
-	private int anio;
+	private int dia = 1;
+	private int mes = 1;
+	private int anio = 1970;
 
 	/**
 	 * Constructor por defecto
@@ -48,7 +48,7 @@ public class Fecha {
 	 * @param dia Valor que le vamos a asignar a 'dia'
 	 */
 	public void setDia(int dia) {
-		if (fechaCorrecta()) {
+		if (dia > 0 && dia <=31 && fechaCorrecta()) {
 			this.dia = dia;
 		}
 	}
@@ -69,7 +69,7 @@ public class Fecha {
 	 * @param mes El valor que le queremos asignar a 'mes'
 	 */
 	public void setMes(int mes) {
-		if (fechaCorrecta()) {
+		if (fechaCorrecta() && mes > 0 && mes <=12) {
 			this.mes = mes;
 		}
 	}
@@ -153,7 +153,7 @@ public class Fecha {
 	public void diaSiguiente() {
 		if (this.dia == 31 && mesDe31()) { // Si es 31 de un mes de 31 días
 
-			if (lastMonth()) { // Y además es diciembre, debemos cambiar el año y hacer que sea 1 de enero
+			if (this.mes == 12) { // Y además es diciembre, debemos cambiar el año y hacer que sea 1 de enero
 				setDia(1);
 				setMes(1);
 				this.anio++;
@@ -167,7 +167,7 @@ public class Fecha {
 		// Pero si no es 31 de un mes de 31 días, y en cambio es 29 de febrero de un
 		// bisiesto, 28 de febrero de un año normal o día 30 de un mes de 30 días,
 		// cambiamos la fecha
-		else if ((this.dia == 29 && this.mes == 2 && esBisiesto()) || this.dia == 28 && this.mes == 2
+		else if ((this.dia == 29 && this.mes == 2 && esBisiesto()) || this.dia == 28 && this.mes == 2 && !esBisiesto()
 				|| this.dia == 30 && this.mes != 2) {
 			this.dia = 1;
 			this.mes++;
@@ -176,21 +176,6 @@ public class Fecha {
 		else {
 			this.dia++;
 		}
-	}
-
-	/**
-	 * Método que comprueba si es diciembre o no
-	 * 
-	 * @return Devuelve un booleano en función de si es diciembre o no
-	 */
-	public boolean lastMonth() {
-		boolean ultimo = false;
-
-		if (this.mes == 12) {
-			ultimo = true;
-		}
-
-		return ultimo;
 	}
 
 	/**
