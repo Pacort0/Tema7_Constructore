@@ -7,10 +7,14 @@ package ejercicio03;
  *
  */
 public class Articulo {
+	enum Departamento{
+		Electrónica, Alimentación, Droguería
+	}
 	public final static int IVA = 21;
-	private String nombre;
-	private double precio;
-	private int cuantosQuedan;
+	private String nombre = "";
+	private double precio = 0;
+	private int cuantosQuedan = 0;
+	private Departamento departamento = Departamento.Droguería;
 
 	/**
 	 * Constructor que asigna valores a cada artículo
@@ -18,7 +22,7 @@ public class Articulo {
 	 * @param precio Asigna un precio al artíclo
 	 * @param cuantosQuedan Asigna una cantidad de stock del artículo
 	 */
-	public Articulo(String nombre, double precio, int cuantosQuedan) {
+	public Articulo(String nombre, double precio, int cuantosQuedan, String departamento) {
 
 		if (precio <= 0 || cuantosQuedan < 0) {
 			System.err.println("Parámetros introducidos incorrectos.");
@@ -26,6 +30,7 @@ public class Articulo {
 			this.nombre = nombre;
 			this.precio = precio;
 			this.setCuantosQuedan(cuantosQuedan);
+			this.departamento = Departamento.valueOf(departamento);
 		}
 	}
 	
@@ -86,7 +91,7 @@ public class Articulo {
 	 * @param cargamento Cantidad de productos que se reciben en el cargamento
 	 */
 	void almacenar(int cargamento) {
-		this.setCuantosQuedan(this.getCuantosQuedan() + cargamento);
+		setCuantosQuedan(cuantosQuedan + cargamento);
 	}
 
 	public int getCuantosQuedan() {
@@ -96,5 +101,21 @@ public class Articulo {
 	public void setCuantosQuedan(int cuantosQuedan) {
 		this.cuantosQuedan = cuantosQuedan;
 	}
+
+	public Departamento getDepartamento() {
+		return departamento;
+	}
+
+	public void setDepartamento(Departamento departamento) {
+		this.departamento = departamento;
+	}
+
+	@Override
+	public String toString() {
+		return "Articulo [nombre = " + nombre + ", precio = " + precio + ", cuantosQuedan = " + cuantosQuedan
+				+ ", departamento = " + departamento + "]";
+	}
+	
+	
 
 }
