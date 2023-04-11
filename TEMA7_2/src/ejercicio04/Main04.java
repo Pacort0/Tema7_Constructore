@@ -93,7 +93,7 @@ public class Main04 {
 		genero = sc.nextLine();
 		System.out.println("Introduzca la duración del disco: ");
 		duracion = sc.nextInt();
-		sc.hasNextLine();
+		sc.nextLine();
 
 		coleccion[contador] = new Disco(codigo, autor, titulo, genero, duracion);
 
