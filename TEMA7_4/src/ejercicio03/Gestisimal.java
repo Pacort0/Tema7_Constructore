@@ -1,4 +1,4 @@
-package ejercicio02;
+package ejercicio03;
 
 public class Gestisimal {
 	
