@@ -1,7 +1,7 @@
-package ejercicio03;
+package ejercicio02;
 
 public class Gestisimal {
-	
+
 	private int codigo = 0;
 	private String descripcion = "";
 	private double precioVenta = 0;
@@ -64,7 +64,6 @@ public class Gestisimal {
 		return "Gestisimal [codigo = " + codigo + ", descripcion = " + descripcion + ", precio de venta = " + precioVenta
 				+ ", precio de compra = " + precioCompra + ", stock = " + stock + "]";
 	}
-	
 	
 	
 }
