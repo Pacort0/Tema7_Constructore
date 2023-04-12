@@ -12,11 +12,11 @@ public class Libro {
 	enum Genero{
 		Narrativo, Lírico, Dramático, Didáctico, Poético
 	}
-	String titulo;
-	String autor;
-	int ejemplares;
-	int prestados;
-	Genero genero;
+	private String titulo;
+	private String autor;
+	private int ejemplares;
+	private int prestados;
+	private Genero genero;
 
 	/**
 	 * Constructor vacío por defecto
