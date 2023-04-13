@@ -115,7 +115,7 @@ public class Main01 {
 			do {
 				System.out.println("Introduzca la nota media del alumne: ");
 				listado[indice].setNotaMedia(sc.nextDouble());
-			} while (listado[indice].getNotaMedia() < 0 || listado[indice].getNotaMedia() > 10);
+			} while (listado[indice].getNotaMedia() < 0 || listado[indice].getNotaMedia()  > 10);
 		}
 
 		return indice;
