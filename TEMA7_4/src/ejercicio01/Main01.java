@@ -82,7 +82,7 @@ public class Main01 {
 		return posicion;
 	}
 
-	private static void nuevoAlumno(Alumno[] listado, int contador) {
+	private static void nuevoAlumno(Alumno[] listado, int posicion) {
 		String nombre;
 		double notaMedia;
 
@@ -94,7 +94,7 @@ public class Main01 {
 			notaMedia = sc.nextDouble();
 		} while (notaMedia < 0 || notaMedia > 10);
 
-		listado[contador] = new Alumno(nombre, notaMedia);
+		listado[posicion] = new Alumno(nombre, notaMedia);
 	}
 
 	private static int modificaAlumno(Alumno[] listado) {
