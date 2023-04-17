@@ -5,6 +5,7 @@ public class Main04 {
 	public static void main(String[] args) {
 		System.out.println("Bienvenidos al banco de ESPAÑA");
 		
+		
 	}
 	
 	private static void menu() {
@@ -15,4 +16,6 @@ public class Main04 {
 				+ "\n4. Modificar datos de una cuenta."
 				+ "\n5. Cerrar programa.");
 	}
+	
+	private static void 
 }
