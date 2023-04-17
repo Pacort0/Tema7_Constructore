@@ -19,11 +19,11 @@ public class Pizza {
 	public Pizza() {
 	}
 
-	public Pizza(int codigo, Tamanio tamanio, Tipo tipo, Estado estado) {
+	public Pizza(int codigo, String tamanio, String tipo, String estado) {
 		this.codigo = codigo;
-		this.tamanio = tamanio;
-		this.tipo = tipo;
-		this.estado = estado;
+		this.tamanio = Tamanio.valueOf(tamanio);
+		this.tipo = Tipo.valueOf(tipo);
+		this.estado = Estado.valueOf(estado);
 	}
 
 	public int getCodigo() {
@@ -34,33 +34,34 @@ public class Pizza {
 		this.codigo = codigo;
 	}
 
-	public Tamanio getTamanio() {
-		return tamanio;
+	public String getTamanio() {
+		return String.valueOf(tamanio);
 	}
 
-	public void setTamanio(Tamanio tamanio) {
-		this.tamanio = tamanio;
+	public void setTamanio(String tamanio) {
+		this.tamanio = Tamanio.valueOf(tamanio);
 	}
 
-	public Tipo getTipo() {
-		return tipo;
+	public String getTipo() {
+		return String.valueOf(tipo);
 	}
 
-	public void setTipo(Tipo tipo) {
-		this.tipo = tipo;
+	public void setTipo(String tipo) {
+		this.tipo = Tipo.valueOf(tipo);
 	}
 
-	public Estado getEstado() {
-		return estado;
+	public String getEstado() {
+		return String.valueOf(estado);
 	}
 
-	public void setEstado(Estado estado) {
-		this.estado = estado;
+	public void setEstado(String estado) {
+		this.estado = Estado.valueOf(estado);
 	}
 
 	@Override
 	public String toString() {
-		return "Pizza [codigo=" + codigo + ", tamanio=" + tamanio + ", tipo=" + tipo + ", estado=" + estado + "]";
+		return "Código de la pizza = " + codigo +  ", tamaño = " + tamanio + ", tipo = " + tipo + ", estado = " + estado + "";
+		
 	}
 	
 }
