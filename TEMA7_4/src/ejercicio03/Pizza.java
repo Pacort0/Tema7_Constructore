@@ -1,10 +1,7 @@
 package ejercicio03;
 
 public class Pizza {
-<<<<<<< HEAD
 	
-
-=======
 	enum Tamanio{
 		Mediana, Familiar
 	}
@@ -65,11 +62,5 @@ public class Pizza {
 	public String toString() {
 		return "Pizza [codigo=" + codigo + ", tamanio=" + tamanio + ", tipo=" + tipo + ", estado=" + estado + "]";
 	}
-	
-	
-	
-	
-	
->>>>>>> branch 'master' of https://github.com/Pacort0/Tema7_Constructore.git
 	
 }
