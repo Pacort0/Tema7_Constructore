@@ -61,7 +61,7 @@ public class Gestisimal {
 
 	@Override
 	public String toString() {
-		return "Gestisimal [codigo = " + codigo + ", descripcion = " + descripcion + ", precio de venta = " + precioVenta
+		return "Codigo = " + codigo + ", descripcion = " + descripcion + ", precio de venta = " + precioVenta
 				+ ", precio de compra = " + precioCompra + ", stock = " + stock + "]";
 	}
 	
