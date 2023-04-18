@@ -9,7 +9,6 @@ public class Main03 {
 
 	public static void main(String[] args) {
 		int opcion;
-		int contador = 0;
 		int posicion;
 		Pizza[] pedidos = new Pizza[0];
 
@@ -18,7 +17,7 @@ public class Main03 {
 			opcion = sc.nextInt();
 			switch (opcion) {
 			case 1:
-				if (contador > 0) {
+				if (pedidos.length > 0) {
 					muestraPedidos(pedidos);
 				} else {
 					System.err.println("No hay pedidos en la lista.");
@@ -27,13 +26,10 @@ public class Main03 {
 			case 2:
 				posicion = posicionLibre(pedidos);
 				pedidos = nuevoPedido(pedidos, posicion);
-				if (posicion < 0) {
-					contador++;
-				}
 				break;
 			case 3:
 				if (cambioEstado(pedidos) < 0) {
-					System.err.println("El código introducido no existe o la pizza ya ha sido servida.");
+					System.err.println("El código introducido no existe o el pedido ya ha sido entregado.");
 				}
 				break;
 			case 4:
@@ -43,10 +39,14 @@ public class Main03 {
 				}
 				break;
 			case 5:
+				if(cancelaPedido(pedidos) != 0) {
+					System.err.println("No se puede cancelar el pedido porque éste no existe o ya ha sido entregado.");
+				}
+			case 6:
 				System.out.println("Hasta luego.");
 				break;
 			default:
-				System.out.println("Esa opción no está contemplada.");
+				System.err.println("Esa opción no está contemplada.");
 			}
 
 		} while (opcion != 5);
@@ -54,7 +54,7 @@ public class Main03 {
 
 	private static void menu() {
 		System.out.println("Introduzca una opción: " + "\n1. Mostrar pizzas" + "\n2. Nuevo pedido"
-				+ "\n3. Pizza servida" +  "\n4. Cerrar jornada" + "\n5. Salir");
+				+ "\n3. Pizza servida" + "\n4. Cerrar jornada" + "\n5. Salir");
 	}
 
 	private static void muestraPedidos(Pizza[] pedidos) {
@@ -76,9 +76,7 @@ public class Main03 {
 			pedidos = Arrays.copyOf(pedidos, pedidos.length + 1);
 			sc.nextLine();
 
-			if (posicion == -1) {
-				posicion = pedidos.length - 1;
-			}
+			posicion = pedidos.length - 1;
 
 			pedidos[pedidos.length - 1] = new Pizza(posicion, elijeTamanio(), elijeTipo(), "Pedida");
 		}
@@ -92,7 +90,7 @@ public class Main03 {
 		while (posicion < pedidos.length && pedidos[posicion] != null) {
 			posicion++;
 		}
-		if (posicion == pedidos.length) {
+		if (posicion == pedidos.length || pedidos[posicion] == null) {
 			posicion = -1;
 		}
 
@@ -152,11 +150,11 @@ public class Main03 {
 	private static int cambioEstado(Pizza[] pedidos) {
 		int codigo;
 		int indice = 0;
-		System.out.println("Introduzca el código de la pizza: ");
+		System.out.println("Introduzca el código del pedido: ");
 		codigo = sc.nextInt();
 
 		if (codigo < 0 || codigo >= pedidos.length
-				|| pedidos[codigo] == null && pedidos[codigo].getEstado().equals("Servida")) {
+				|| pedidos[codigo] == null || pedidos[codigo].getEstado().equals("Servida")) {
 			indice = -1;
 		} else {
 			pedidos[codigo].setEstado("Servida");
@@ -178,5 +176,23 @@ public class Main03 {
 			pedidos = new Pizza[0];
 		}
 		return pedida;
+	}
+	
+	private static int cancelaPedido(Pizza[] pedidos) {
+		int codigo;
+		int indice = 0;
+		
+		System.out.println("Introduzca el código del pedido a cancelar: ");
+		codigo = sc.nextInt();
+		
+		if (codigo < 0 || codigo >= pedidos.length
+				|| pedidos[codigo] == null || pedidos[codigo].getEstado().equals("Servida")) {
+			indice = -1;
+		}
+		else {
+			pedidos[codigo] = null;
+		}
+		
+		return indice;
 	}
 }
