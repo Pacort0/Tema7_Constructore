@@ -64,8 +64,11 @@ public class CuentaCorrienteCRUD {
 		this.nombre = nombre;
 	}
 
-	public void setEstado(Estado estado) {
-		this.estado = estado;
+	public void setSaldo(double saldo) {
+		this.saldo = saldo;
+	}
+	public double getSaldo() {
+		return saldo;
 	}
 
 	public String getEstado() {

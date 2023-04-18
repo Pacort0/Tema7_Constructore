@@ -110,9 +110,14 @@ public class Main04 {
 				&& indice < cuentas.length) {
 			indice++;
 		}
+
+		if (indice == cuentas.length || cuentas[indice].getDNI().equalsIgnoreCase(dni)
+				|| cuentas[indice].getEstado().equals("Bloqueada")) { // Aquí me he quedao
+			indice = -1;
+		}
 		
-		if(indice == cuentas.length) { //Aquí me he quedao
-			
+		else {
+			cuentas[indice].setEstado("Bloqueada");
 		}
 
 		return indice;
