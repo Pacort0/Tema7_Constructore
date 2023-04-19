@@ -19,11 +19,10 @@ public class Pizza {
 	public Pizza() {
 	}
 
-	public Pizza(int codigo, String tamanio, String tipo, String estado) {
+	public Pizza(int codigo, String tamanio, String tipo) {
 		this.codigo = codigo;
 		this.tamanio = Tamanio.valueOf(tamanio);
 		this.tipo = Tipo.valueOf(tipo);
-		this.estado = Estado.valueOf(estado);
 	}
 
 	public int getCodigo() {
