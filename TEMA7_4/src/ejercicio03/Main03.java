@@ -37,11 +37,12 @@ public class Main03 {
 					System.err.println("No se puede cerrar la jornada laboral, aún hay " + finJornada(pedidos)
 							+ " pizza(s) sin entregar.");
 				} else {
-
+					pedidos = Arrays.copyOf(pedidos, 0);
 				}
 				break;
 			case 5:
 				cancelaPedido(pedidos);
+				break;
 			case 6:
 				System.out.println("Hasta luego.");
 				break;
@@ -80,7 +81,7 @@ public class Main03 {
 
 			posicion = pedidos.length - 1;
 
-			pedidos[pedidos.length - 1] = new Pizza(posicion, elijeTamanio(), elijeTipo());
+			pedidos[posicion] = new Pizza(posicion, elijeTamanio(), elijeTipo());
 			pedidos[posicion].setEstado("Pedida");
 		}
 
