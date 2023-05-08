@@ -195,7 +195,7 @@ public class Main02 {
 		System.out.println("Introduzca la cantidad de articulos recibidos: ");
 		articulos = sc.nextInt();
 
-		if(codigo > 0 && codigo < listado.length && listado[codigo] != null) {
+		if(codigo >= 0 && codigo < listado.length && listado[codigo] != null) {
 			if (articulos <= 0) {
 				System.err.println("El cargamento debe de tener algún artículo.");
 			} else {
@@ -217,9 +217,9 @@ public class Main02 {
 		System.out.println("Introduzca la cantidad de articulos a exportar: ");
 		articulos = sc.nextInt();
 
-		if(codigo > 0 && codigo < listado.length && listado[codigo] != null) {
+		if(codigo >= 0 && codigo < listado.length && listado[codigo] != null) {
 			if (articulos <= 0) {
-				System.err.println("El cargamento debe de tener algún artículo.");
+				System.err.println("El cargamento debe de contener algún producto.");
 			} else if (listado[codigo].getStock() - articulos >= 0) {
 				listado[codigo].setStock(listado[codigo].getStock() - articulos);
 				System.out.println("Artículo(s) exportados con éxito.");
